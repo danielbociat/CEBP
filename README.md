@@ -46,5 +46,5 @@ The system will save intermediate state
 * StockUnitId
 
 ## Diagram
-
+![alt text](https://github.com/danielbociat/CEBP/blob/main/diagram.png)
 
