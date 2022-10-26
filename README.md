@@ -7,8 +7,8 @@ Sellers have stocks and place selling offers.
 Market decides when to match sellers and buyers => transaction done 
 
 # Non-functional requirements
-The system should be able to make requests in 1s -> buy something available or expire offer, or leave it as pending offer
-The system will save intermediate state
+The system should be able to make requests in 1s -> buy something available or expire offer, or leave it as pending offer.
+The system will save intermediate state.
 
 # Entities
 
