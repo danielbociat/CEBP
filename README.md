@@ -1,9 +1,9 @@
 
 
 # Functional requirements
-Users are buyer and sellers
-Buyers have money and place offer
-Sellers have stocks and place selling offers
+Users are buyers and sellers. 
+Buyers have money and place offers.
+Sellers have stocks and place selling offers.
 Market decides when to match sellers and buyers => transaction done 
 
 # Non-functional requirements
