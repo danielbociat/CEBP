@@ -41,6 +41,9 @@ public class Server
             inputStream = new DataInputStream(
                     new BufferedInputStream(socket.getInputStream()));
 
+            DataOutputStream outStream = new DataOutputStream(socket.getOutputStream());
+            outStream.writeUTF("Welcome to the squad!");
+
             String line = "";
 
             // reads message from client until "Over" is sent
@@ -50,6 +53,7 @@ public class Server
                 {
                     line = inputStream.readUTF();
                     System.out.println(line);
+                    handleClientInput(line, outStream);
 
                 }
                 catch(IOException i)
@@ -67,6 +71,42 @@ public class Server
         {
             System.out.println(i);
         }
+    }
+
+    private static void handleClientInput(String input, DataOutputStream outStream)
+    {
+        try{
+            switch(input) {
+                case "PlaceBuyerOffer":
+                    System.out.println("buyer offer placed!");
+                    outStream.writeUTF("buyer offer placed!");
+                    break;
+                case "PlaceSellerOffer":
+                    System.out.println("seller offer placed!");
+                    outStream.writeUTF("seller offer placed!");
+                    break;
+                case "ModifySellerOffer":
+                    System.out.println("seller offer modified!");
+                    outStream.writeUTF("seller offer modified!");
+                    break;
+                case "ViewOffers":
+                    System.out.println("view offers called!");
+                    outStream.writeUTF("view offers called!");
+                    break;
+                case "ViewTransactions":
+                    System.out.println("view transactions called!");
+                    outStream.writeUTF("view transactions called!");
+                    break;
+                default:
+                    outStream.writeUTF("no bueno");
+                    break;
+            }
+        }
+        catch(IOException i)
+        {
+            System.out.println(i);
+        }
+
     }
 
     public static void main(String args[])

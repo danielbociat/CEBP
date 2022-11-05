@@ -7,6 +7,7 @@ public class Client
     private Socket socket            = null;
     private DataInputStream  input   = null;
     private DataOutputStream out     = null;
+    private DataInputStream serverMessagesStream = null;
 
     // constructor to put ip address and port
     public Client(String address, int port)
@@ -22,6 +23,32 @@ public class Client
 
             // sends output to the socket
             out    = new DataOutputStream(socket.getOutputStream());
+            serverMessagesStream = new DataInputStream(socket.getInputStream());
+
+            Thread readServerMessagesThread = new Thread( () -> {
+                String serverMessage = "";
+                while (true) {
+                    try {
+                        serverMessage = serverMessagesStream.readUTF();
+                        System.out.println(serverMessage);
+                    } catch (IOException i) {
+                        System.out.println(i);
+                    }
+                }
+            });
+            readServerMessagesThread.start();
+//            Thread readCommandsThread = new Thread( () -> {
+//                String line = "";
+//                while (!line.equals("Over")) {
+//                    try {
+//                        line = input.readLine();
+//                        out.writeUTF(line);
+//                    } catch (IOException i) {
+//                        System.out.println(i);
+//                    }
+//                }
+//            });
+//            readCommandsThread.start();
         }
         catch(UnknownHostException u)
         {
@@ -30,23 +57,6 @@ public class Client
         catch(IOException i)
         {
             System.out.println(i);
-        }
-
-        // string to read message from input
-        String line = "";
-
-        // keep reading until "Over" is input
-        while (!line.equals("Over"))
-        {
-            try
-            {
-                line = input.readLine();
-                out.writeUTF(line);
-            }
-            catch(IOException i)
-            {
-                System.out.println(i);
-            }
         }
 
         // close the connection
