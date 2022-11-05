@@ -1,12 +1,12 @@
 import java.net.*;
 import java.io.*;
+import java.util.*;
 
 public class Server
 {
     //initialize socket and input stream
-    private Socket          socket   = null;
-    private ServerSocket    server   = null;
-    private DataInputStream in       =  null;
+    private List<Thread> clientSocketThreads = new ArrayList<Thread>();
+    private ServerSocket server = null;
 
     // constructor with port
     public Server(int port)
@@ -17,13 +17,28 @@ public class Server
             server = new ServerSocket(port);
             System.out.println("Server started");
 
-            System.out.println("Waiting for a client ...");
+            for (;;)
+            {
+                Socket socket = server.accept();
+                Thread newClient = new Thread(() -> handleClient(socket));
+                clientSocketThreads.add(newClient);
+                newClient.start();
+            }
 
-            socket = server.accept();
+        }
+        catch(IOException i)
+        {
+            System.out.println(i);
+        }
+    }
+    private static void handleClient(Socket socket)
+    {
+        try
+        {
             System.out.println("Client accepted");
-
+            DataInputStream inputStream;
             // takes input from the client socket
-            in = new DataInputStream(
+            inputStream = new DataInputStream(
                     new BufferedInputStream(socket.getInputStream()));
 
             String line = "";
@@ -33,7 +48,7 @@ public class Server
             {
                 try
                 {
-                    line = in.readUTF();
+                    line = inputStream.readUTF();
                     System.out.println(line);
 
                 }
@@ -46,7 +61,7 @@ public class Server
 
             // close connection
             socket.close();
-            in.close();
+            inputStream.close();
         }
         catch(IOException i)
         {
@@ -59,8 +74,4 @@ public class Server
         Server server = new Server(5000);
     }
 
-    private string placeOffer()
-    {
-
-    }
 }
