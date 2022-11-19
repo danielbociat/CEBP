@@ -1,3 +1,5 @@
+package Entities;
+
 public class TransactionHistory
 {
     public int id;
