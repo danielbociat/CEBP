@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Entities/Buyer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Buyer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Seller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Seller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockOffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StockUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/TransactionHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/TransactionHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/TransactionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/TransactionRequest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2HlE1D1yivfHekljpuYnb9AiqIk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="" />
+      <created>1668851053168</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668851053168</updated>
+      <workItem from="1668851056531" duration="106000" />
+      <workItem from="1668851298882" duration="78000" />
+      <workItem from="1668851389067" duration="744000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

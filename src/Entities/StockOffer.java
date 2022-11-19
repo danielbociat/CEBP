@@ -1,3 +1,5 @@
+package Entities;
+
 public class StockOffer
 {
     public int id;
