@@ -8,18 +8,19 @@ public class StockOffer implements Runnable
     // region fields
     protected final StockExchange stock_exchange;
     private static int count = 0;
-    private int id;
+    public int id;
     private String instrument;
     private int number_stocks;
     private double value_stock;
     private int seller_id;
-    public final Lock offerLock = new ReentrantLock();
 
+    public final Lock matchLock = new ReentrantLock();
+    public final Lock setCompleteLock = new ReentrantLock();
 
     public enum Type{
         BUY, SELL, COMPLETED
     }
-    private Type type;
+    public Type type;
 
     // endregion
 
@@ -28,6 +29,7 @@ public class StockOffer implements Runnable
     // region ctor
 
     public StockOffer(StockExchange stock_exchange, Type t, double value) {
+        this.id = this.count++;
         this.stock_exchange = stock_exchange;
         this.type = t;
         this.value_stock = value;
@@ -55,7 +57,11 @@ public class StockOffer implements Runnable
     }
 
     public boolean checkMatch(StockOffer so){
-        return so.getValue() <= this.getValue();
+        return Math.abs(so.getValue() - this.getValue()) <= 0.05;
+    }
+
+    public String toString(){
+        return "Offer " + this.id + " with price " + this.value_stock;
     }
 
     public void run() {

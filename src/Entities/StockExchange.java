@@ -1,51 +1,63 @@
 package Entities;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.*;
 import java.util.ArrayList;
 
 public class StockExchange {
-    private ArrayList<StockOffer> offers;
+    private ConcurrentLinkedQueue<StockOffer> offers;
     private ExecutorService executor = Executors.newCachedThreadPool();
-    private final Lock offersLock = new ReentrantLock();
 
 
     // region ctor
     public StockExchange(int i) {
-        this.offers = new ArrayList<StockOffer>();
+        ArrayList tmpArray = new ArrayList<StockOffer>();
+        ArrayList<Double>  prices = new ArrayList<>(Arrays.asList(50.0, 75.0, 100.0, 200.0));
 
-        for (int k = 0; k < i/2; ++k)
-            offers.add(new StockOffer(this, StockOffer.Type.BUY, 50.0));
 
-        for (int k = 0; k < i/2; ++k)
-            offers.add(new StockOffer(this, StockOffer.Type.SELL, 50.0));
+        int n = prices.size();
+        for(Double price : prices){
+            for (int k = 0; k < i/n; ++k) {
+                tmpArray.add(new StockOffer(this, StockOffer.Type.BUY, price));
+                tmpArray.add(new StockOffer(this, StockOffer.Type.SELL, price));
+            }
+        }
+
+        Collections.shuffle(tmpArray);
+        this.offers = new ConcurrentLinkedQueue<StockOffer>(tmpArray);
     }
     // endregion
 
     public void matchOffer(StockOffer stock_offer){
 
-        offersLock.lock();
+        for(StockOffer stockOffer : offers){
 
-        try{
-            for (StockOffer stockOffer : offers) {
-                stockOffer.offerLock.lock();
-                boolean flag = false;
-                try {
-                    if (stockOffer.getType() == StockOffer.Type.SELL && stock_offer.checkMatch(stockOffer)) {
+            if(stock_offer.type == StockOffer.Type.COMPLETED)
+                break;
+
+            try{
+                stockOffer.matchLock.lock();
+                if (stockOffer.getType() == StockOffer.Type.SELL && stock_offer.checkMatch(stockOffer)) {
+                    try {
+                        stockOffer.setCompleteLock.lock();
+
                         stock_offer.setToCompleted();
                         stockOffer.setToCompleted();
 
-                        flag = true;
+                        System.out.println( stock_offer + " matches with " + stockOffer);
+
+                    }finally {
+                        stockOffer.setCompleteLock.unlock();
                     }
-                } finally {
-                    stockOffer.offerLock.unlock();
-
                 }
-
-                if(flag)
-                    break;
+            }finally {
+                stockOffer.matchLock.unlock();
             }
-        }finally {
-            offersLock.unlock();
+
+
         }
 
 
@@ -53,15 +65,13 @@ public class StockExchange {
     }
 
     public void removeOffer(StockOffer stock_offer){
-        offersLock.lock();
-
-        try{
-            offers.remove(stock_offer);
-            /// TBA log
-        }finally {
-            offersLock.unlock();
+        for(StockOffer offer : offers){
+            if(offer == stock_offer) {
+                offers.remove(stock_offer);
+            }
         }
 
+        /// TBA log
         if (offers.isEmpty()) {
             executor.shutdown();
             /// TBA log
