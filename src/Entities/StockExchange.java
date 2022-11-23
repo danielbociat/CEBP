@@ -41,17 +41,10 @@ public class StockExchange {
             try{
                 stockOffer.matchLock.lock();
                 if (stockOffer.getType() == StockOffer.Type.SELL && stock_offer.checkMatch(stockOffer)) {
-                    try {
-                        stockOffer.setCompleteLock.lock();
+                    stock_offer.setToCompleted();
+                    stockOffer.setToCompleted();
 
-                        stock_offer.setToCompleted();
-                        stockOffer.setToCompleted();
-
-                        System.out.println( stock_offer + " matches with " + stockOffer);
-
-                    }finally {
-                        stockOffer.setCompleteLock.unlock();
-                    }
+                    System.out.println( stock_offer + " matches with " + stockOffer);
                 }
             }finally {
                 stockOffer.matchLock.unlock();
