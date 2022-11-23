@@ -38,23 +38,20 @@ public class StockExchange {
             if(stock_offer.type == StockOffer.Type.COMPLETED)
                 break;
 
-            try{
-                stockOffer.matchLock.lock();
-                if (stockOffer.getType() == StockOffer.Type.SELL && stock_offer.checkMatch(stockOffer)) {
-                    stock_offer.setToCompleted();
-                    stockOffer.setToCompleted();
 
-                    System.out.println( stock_offer + " matches with " + stockOffer);
+            if (stockOffer.getType() == StockOffer.Type.SELL && stock_offer.checkMatch(stockOffer)) {
+                if (stockOffer.matchLock.tryLock()) {
+                     try {
+                        stock_offer.setToCompleted();
+                        stockOffer.setToCompleted();
+
+                        System.out.println(stock_offer + " matches with " + stockOffer);
+                    }finally {
+                         stockOffer.matchLock.unlock();
+                     }
                 }
-            }finally {
-                stockOffer.matchLock.unlock();
             }
-
-
         }
-
-
-
     }
 
     public void removeOffer(StockOffer stock_offer){
