@@ -2,8 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="Removed unnecessary lock">
+      <change afterPath="$PROJECT_DIR$/src/Entities/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Broker/Broker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Broker/IBroker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Buyer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Seller.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockExchange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockOffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +33,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -44,6 +55,17 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="CEBP" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -70,6 +92,7 @@
       <workItem from="1668973296877" duration="3042000" />
       <workItem from="1669141866135" duration="10744000" />
       <workItem from="1669187419727" duration="548000" />
+      <workItem from="1669918439318" duration="5205000" />
     </task>
     <task id="LOCAL-00001" summary="Added the classes to package">
       <created>1668852279051</created>
@@ -134,6 +157,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.util.ConcurrentModificationException" package="java.util" />
           <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
