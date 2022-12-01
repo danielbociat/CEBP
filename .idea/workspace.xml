@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="Removed unnecessary lock">
-      <change afterPath="$PROJECT_DIR$/src/Entities/Client.java" afterDir="false" />
+    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="Moved logic to addOffer, removed unused classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Broker/Broker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Broker/IBroker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Buyer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Seller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockExchange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockOffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +86,7 @@
       <workItem from="1668973296877" duration="3042000" />
       <workItem from="1669141866135" duration="10744000" />
       <workItem from="1669187419727" duration="548000" />
-      <workItem from="1669918439318" duration="5205000" />
+      <workItem from="1669918439318" duration="5453000" />
     </task>
     <task id="LOCAL-00001" summary="Added the classes to package">
       <created>1668852279051</created>
@@ -122,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669187494371</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Moved logic to addOffer, removed unused classes">
+      <created>1669923795015</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669923795015</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +146,8 @@
     <MESSAGE value="Added a basic simulation of stock offers with the behavior for a completed offer, left to do: offer matching and logging" />
     <MESSAGE value="Added a simulation of stock offers with the behavior for a completed offer with basic matching and logging" />
     <MESSAGE value="Removed unnecessary lock" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary lock" />
+    <MESSAGE value="Moved logic to addOffer, removed unused classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved logic to addOffer, removed unused classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -8,13 +8,10 @@ public class StockOffer
     // region fields
     private static int count = 0;
     public int id;
-    private String instrument;
-    private int number_stocks;
-    private double value_stock;
-    private int seller_id;
-
+    //private String instrument;
+    //private int number_stocks;
+    private final double value_stock;
     public final Lock matchLock = new ReentrantLock();
-    public final Lock setCompleteLock = new ReentrantLock();
 
     public enum Type{
         BUY, SELL, COMPLETED
@@ -26,7 +23,7 @@ public class StockOffer
     // region ctor
 
     public StockOffer(Type t, double value) {
-        this.id = this.count++;
+        this.id = count++;
         this.type = t;
         this.value_stock = value;
     }
