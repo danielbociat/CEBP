@@ -9,6 +9,7 @@ public class StockOffer
     private static int count = 0;
     public int id;
     //private String instrument;
+
     //private int number_stocks;
     private final double value_stock;
     public final Lock matchLock = new ReentrantLock();
