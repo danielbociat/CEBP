@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="Refactoring">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockExchange.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockOffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +55,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -84,7 +90,8 @@
       <workItem from="1668973296877" duration="3042000" />
       <workItem from="1669141866135" duration="10744000" />
       <workItem from="1669187419727" duration="548000" />
-      <workItem from="1669918439318" duration="5494000" />
+      <workItem from="1669918439318" duration="6016000" />
+      <workItem from="1670005112857" duration="3230000" />
     </task>
     <task id="LOCAL-00001" summary="Added the classes to package">
       <created>1668852279051</created>
@@ -128,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669923927107</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refactoring">
+      <created>1669923958624</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669923958624</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +153,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
