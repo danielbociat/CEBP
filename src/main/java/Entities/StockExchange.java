@@ -27,6 +27,8 @@ public class StockExchange {
                         printTransaction(stock_offer, targetOffer);
                         stock_offer.setToCompleted();
                         targetOffer.setToCompleted();
+
+                        RabbitMQSender.SendMatchMessage(stock_offer, targetOffer);
                     }finally {
                          targetOffer.matchLock.unlock();
                      }
