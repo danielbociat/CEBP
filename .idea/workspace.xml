@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="Refactoring">
+    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="Added Clients, updates logs, updated StockOffer, added more complex simulation">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_rabbitmq_amqp_client_5_16_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_36.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockExchange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/StockOffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CEBP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CEBP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CEBP/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CEBP/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CEBP/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CEBP/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockOffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/TransactionHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TradingTape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TradingTape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +39,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="adelin/rabbitmq" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2HlE1D1yivfHekljpuYnb9AiqIk" />
@@ -35,6 +58,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -42,37 +66,42 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Compound.Parallel">
+    <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="CEBP" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+    <configuration name="TradingTape" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TradingTape" />
+      <module name="CEBP" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
+    <configuration name="Parallel" type="CompoundRunConfigurationType">
+      <toRun name="Main" type="Application" />
+      <toRun name="TradingTape" type="Application" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType">
+      <toRun name="Main" type="Application" />
+      <toRun name="TradingTape" type="Application" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.TradingTape" />
+      <item itemvalue="Compound.Parallel" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -91,7 +120,9 @@
       <workItem from="1669141866135" duration="10744000" />
       <workItem from="1669187419727" duration="548000" />
       <workItem from="1669918439318" duration="6016000" />
-      <workItem from="1670005112857" duration="3230000" />
+      <workItem from="1670005112857" duration="3438000" />
+      <workItem from="1670712518223" duration="836000" />
+      <workItem from="1670761365977" duration="8007000" />
     </task>
     <task id="LOCAL-00001" summary="Added the classes to package">
       <created>1668852279051</created>
@@ -142,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669923958624</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added Clients, updates logs, updated StockOffer, added more complex simulation">
+      <created>1670008526714</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670008526714</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +197,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="origin/dani" />
                       </list>
                     </value>
                   </entry>
@@ -179,7 +217,8 @@
     <MESSAGE value="Removed unnecessary lock" />
     <MESSAGE value="Moved logic to addOffer, removed unused classes" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="Added Clients, updates logs, updated StockOffer, added more complex simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Clients, updates logs, updated StockOffer, added more complex simulation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -195,6 +234,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="3" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.IllegalFormatConversionException" package="java.util" />
+          <option name="timeStamp" value="4" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

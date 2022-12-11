@@ -5,33 +5,33 @@ import java.util.concurrent.*;
 public class StockExchange {
     public static ConcurrentLinkedQueue<StockOffer> offers = new ConcurrentLinkedQueue<>();
 
-    public static void printTransaction(StockOffer left, StockOffer right){
-        if(left.getType() == StockOffer.Type.BUY){
-            System.out.println("Client " + left.getOwner() + " bought " + left.getInstrument() + " from " + right.getOwner() + " for " + right.getValue());
-        }
-
-        if(left.getType() == StockOffer.Type.SELL){
-            System.out.println("Client " + left.getOwner() + " sold " + left.getInstrument() + " to " + right.getOwner() + " for " + right.getValue());
-        }
-
-    }
-
     public static void matchOffer(StockOffer stock_offer){
         for(StockOffer targetOffer : offers){
-            if(stock_offer.type == StockOffer.Type.COMPLETED)
-                break;
+            if(stock_offer.matchLock.tryLock()){
 
-            if (targetOffer.getType() != stock_offer.getType() && stock_offer.checkMatch(targetOffer)) {
-                if (targetOffer.matchLock.tryLock()) {
-                     try {
-                        printTransaction(stock_offer, targetOffer);
-                        stock_offer.setToCompleted();
-                        targetOffer.setToCompleted();
+                if(stock_offer.type == StockOffer.Type.COMPLETED) {
+                    stock_offer.matchLock.unlock();
+                    break;
+                }
 
-                        RabbitMQSender.SendMatchMessage(stock_offer, targetOffer);
-                    }finally {
-                         targetOffer.matchLock.unlock();
-                     }
+                try {
+                    if (targetOffer.getType() != stock_offer.getType() && stock_offer.checkMatch(targetOffer)) {
+                        if (targetOffer.matchLock.tryLock()) {
+                            try {
+                                int quantity = stock_offer.getQuantityOfMatching(targetOffer);
+                                Transaction transaction = new Transaction(stock_offer, targetOffer, quantity);
+                                // System.out.println(transaction);
+                                RabbitMQSender.SendMessageToQueue("offers.match",transaction);
+
+                                stock_offer.updateQuantity(quantity);
+                                targetOffer.updateQuantity(quantity);
+                            }finally {
+                                targetOffer.matchLock.unlock();
+                            }
+                        }
+                    }
+                }finally {
+                    stock_offer.matchLock.unlock();
                 }
             }
         }
@@ -49,6 +49,5 @@ public class StockExchange {
         offers.add(offer);
         Thread t = new Thread(() -> matchOffer(offer));
         t.start();
-
     }
 }

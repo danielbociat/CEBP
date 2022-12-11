@@ -4,6 +4,7 @@ import Entities.Client;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
@@ -12,11 +13,12 @@ public class Main {
         ArrayList<StockOffer> tmpArray;
 
         ArrayList<Double>  prices = new ArrayList<>(Arrays.asList(50.0, 75.0, 100.0, 200.0, 100.0, 500.0, 5.0, 105.0));
-        ArrayList<String> instruments = new ArrayList<>(Arrays.asList("META", "TESLA", "AAPL", "AMZN", "PLTR", "SEX", "NEO", "NITO"));
+        ArrayList<String> instruments = new ArrayList<>(Arrays.asList("META", "TESLA", "AAPL", "AMZN", "PLTR", "RIOT", "NEO", "NITO"));
         int no_stocks = instruments.size();
 
         ArrayList<Client> clients = new ArrayList<>();
         int c = 10, no_offers = 120, n = prices.size();
+        int max = 15, min = 1;
 
         for(int client = 0; client < c; ++client){
             tmpArray = new ArrayList<>();
@@ -24,16 +26,10 @@ public class Main {
             Client newClient = new Client();
             for(int instr = 0;  instr < no_stocks; ++instr){
                 for (int k = 0; k < no_offers/n; ++k) {
-                    StockOffer buyOffer = new StockOffer(StockOffer.Type.BUY, prices.get(instr), instruments.get(instr), newClient);
+                    StockOffer buyOffer = new StockOffer(StockOffer.Type.BUY, prices.get(instr), instruments.get(instr), newClient, new Random().nextInt(max - min + 1) + min);
+                    StockOffer sellOffer = new StockOffer(StockOffer.Type.SELL, prices.get(instr), instruments.get(instr), newClient, new Random().nextInt(max - min + 1) + min);
                     tmpArray.add(buyOffer);
-
-                    RabbitMQSender.SendBuyOfferMessage(buyOffer);
-
-
-                    StockOffer sellOffer = new StockOffer(StockOffer.Type.SELL, prices.get(instr), instruments.get(instr), newClient);
                     tmpArray.add(sellOffer);
-
-                    RabbitMQSender.SendSellOfferMessage(sellOffer);
                 }
             }
             Collections.shuffle(tmpArray);

@@ -5,10 +5,13 @@ import com.rabbitmq.client.DeliverCallback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TradingTape {
 
-    public static void main(String[] argv) throws Exception {
+    public static ConcurrentLinkedQueue<String> transactionHistory = new ConcurrentLinkedQueue<>();
+
+    public static void main(String[] argv) {
         ArrayList<String> queues = new ArrayList<>(Arrays.asList("offers.buy", "offers.sell", "offers.match"));
 
         for(String queue : queues)
@@ -36,7 +39,8 @@ public class TradingTape {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println(" [x] Received '" + message + "'");
+            transactionHistory.add(message);
+            System.out.println(" [x] Received '" + message + "'"); /// save transaction history in memory
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
     }

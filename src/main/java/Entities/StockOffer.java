@@ -1,18 +1,18 @@
 package Entities;
 
+import java.sql.Timestamp;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class StockOffer
 {
     // region fields
-    private static int count = 0;
-    private int id;
-    private Client owner;
+    private Client client;
     private String instrument;
-    //private int number_stocks;
+    private  int quantity;
     private final double value_stock;
     public final Lock matchLock = new ReentrantLock();
+    private Timestamp timestamp;
 
     public enum Type{
         BUY, SELL, COMPLETED
@@ -23,12 +23,13 @@ public class StockOffer
 
     // region ctor
 
-    public StockOffer(Type t, double value, String instrument, Client owner) {
-        this.id = count++;
+    public StockOffer(Type t, double value, String instrument, Client client, int quantity) {
         this.type = t;
         this.value_stock = value;
         this.instrument = instrument;
-        this.owner = owner;
+        this.client = client;
+        this.quantity = quantity;
+        this.timestamp = new Timestamp(System.currentTimeMillis());
     }
 
     // endregion
@@ -41,8 +42,8 @@ public class StockOffer
     public Type getType(){
         return this.type;
     }
-    public Client getOwner(){
-        return this.owner;
+    public Client getClient(){
+        return this.client;
     }
     public double getValue(){
         return this.value_stock;
@@ -53,10 +54,26 @@ public class StockOffer
     }
 
     public boolean checkMatch(StockOffer so){
-        return !owner.equals(so.owner) && instrument.equals(so.instrument) && so.type != Type.COMPLETED && Math.abs(so.value_stock - value_stock) <= 0.05;
+        return !client.equals(so.client) && instrument.equals(so.instrument) && so.type != Type.COMPLETED && Math.abs(so.value_stock - value_stock) <= 0.05;
+    }
+
+    public int getQuantityOfMatching(StockOffer targetOffer){
+        int quant = Math.min(this.quantity, targetOffer.quantity);
+
+        return quant;
+
+    }
+
+    public void updateQuantity(int quantity){
+        this.quantity -= quantity;
+
+        if(this.quantity == 0){
+            this.setToCompleted();
+        }
     }
 
     public String toString(){
-        return "Client: " + owner + ", Type:" + type + ", Instrument: " + instrument;
+        return String.format("[%s] OFFER PLACED --- Client: Client %d, Type: %s, Instrument: %s, Quantity: %d, ValuePerStock: %f",
+                timestamp, client.getId(), type, instrument, quantity, value_stock);
     }
 }
