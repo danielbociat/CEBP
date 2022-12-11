@@ -28,6 +28,11 @@ public class Client {
 
     public void placeOffers(){
         for(StockOffer offer : offers){
+            if(offer.getType() == StockOffer.Type.BUY)
+                RabbitMQSender.SendMessageToQueue("offers.buy", offer);
+            else
+                RabbitMQSender.SendMessageToQueue("offers.sell", offer);
+
             StockExchange.addOffer(offer);
         }
     }
