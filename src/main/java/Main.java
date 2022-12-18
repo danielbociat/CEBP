@@ -43,8 +43,19 @@ public class Main {
             Thread t = new Thread(() -> cl.placeOffers());
             t.start();
         }
+
+        for(int i = 0; i < 5; ++i)
+        {
+            Thread t = new Thread(() -> {
+                while(true){
+                    StockExchange.MatchOffers();
+                }
+            });
+            t.start();
+        }
+
         try{
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(30);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -13,7 +13,9 @@ public class StockOffer
     private final double value_stock;
     public final Lock matchLock = new ReentrantLock();
     private Timestamp timestamp;
+    private int id;
 
+    static int total_id = 0;
     public enum Type{
         BUY, SELL, COMPLETED
     }
@@ -30,6 +32,7 @@ public class StockOffer
         this.client = client;
         this.quantity = quantity;
         this.timestamp = new Timestamp(System.currentTimeMillis());
+        this.id = total_id++;
     }
 
     // endregion
@@ -75,5 +78,16 @@ public class StockOffer
     public String toString(){
         return String.format("[%s] OFFER PLACED --- Client: Client %d, Type: %s, Instrument: %s, Quantity: %d, ValuePerStock: %f",
                 timestamp, client.getId(), type, instrument, quantity, value_stock);
+    }
+
+    public int compareTo(StockOffer so){
+        int string_comp = so.instrument.compareTo(instrument), time_comp = so.timestamp.compareTo(timestamp), id_comp = so.id - id;
+        if(string_comp != 0)
+            return string_comp;
+
+        if(time_comp != 0)
+            return time_comp;
+
+        return id_comp;
     }
 }
