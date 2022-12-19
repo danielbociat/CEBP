@@ -2,8 +2,9 @@ package Entities;
 import java.util.concurrent.*;
 
 
+
 public class StockExchange {
-    public static ConcurrentLinkedQueue<StockOffer> offers = new ConcurrentLinkedQueue<>();
+    public static ConcurrentSkipListSet<StockOffer> offers = new ConcurrentSkipListSet<StockOffer>(new StockOfferComparator());
 
     public static void matchOffer(StockOffer stock_offer){
         for(StockOffer targetOffer : offers){
@@ -37,6 +38,12 @@ public class StockExchange {
         }
     }
 
+    public static void MatchOffers(){
+        for(StockOffer stock_offer : offers){
+            matchOffer(stock_offer);
+        }
+    }
+
     public static void removeOffer(StockOffer stock_offer){
         for(StockOffer offer : offers){
             if(offer == stock_offer) {
@@ -47,7 +54,6 @@ public class StockExchange {
 
     public static void addOffer(StockOffer offer){
         offers.add(offer);
-        Thread t = new Thread(() -> matchOffer(offer));
-        t.start();
+
     }
 }
