@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="Added Clients, updates logs, updated StockOffer, added more complex simulation">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/StockOfferComparator.java" afterDir="false" />
+    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="- added separate threads for matching, added priority queue for offers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockOffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockUnit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/TransactionRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +58,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RunManager" selected="Compound.Parallel">
@@ -73,13 +76,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,6 +125,7 @@
       <workItem from="1670005112857" duration="3438000" />
       <workItem from="1670712518223" duration="836000" />
       <workItem from="1670761365977" duration="8007000" />
+      <workItem from="1671478656504" duration="4608000" />
     </task>
     <task id="LOCAL-00001" summary="Added the classes to package">
       <created>1668852279051</created>
@@ -177,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670008526714</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="- added separate threads for matching, added priority queue for offers">
+      <created>1671396641565</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671396641565</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +228,8 @@
     <MESSAGE value="Moved logic to addOffer, removed unused classes" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Added Clients, updates logs, updated StockOffer, added more complex simulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Clients, updates logs, updated StockOffer, added more complex simulation" />
+    <MESSAGE value="- added separate threads for matching, added priority queue for offers" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added separate threads for matching, added priority queue for offers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -235,6 +249,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.util.IllegalFormatConversionException" package="java.util" />
           <option name="timeStamp" value="4" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="5" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
