@@ -8,13 +8,12 @@ import com.rabbitmq.client.DeliverCallback;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TradingTape {
 
     public static ArrayList<StockOfferMessage> offers = new ArrayList<>();
-
     public static ArrayList<Transaction> transactions = new ArrayList<>();
+
     public static void main(String[] argv) {
         ArrayList<String> queues = new ArrayList<>(Arrays.asList("offers.buy", "offers.sell", "offers.match"));
 
@@ -57,7 +56,7 @@ public class TradingTape {
         StockOfferMessage sellOffer = offersMessage[0];
         StockOfferMessage buyOffer = offersMessage[1];
 
-        Transaction transaction = new Transaction(sellOffer, buyOffer, Math.min(sellOffer.quantity, buyOffer.quantity));
+        Transaction transaction = new Transaction(offersMessage[0], offersMessage[1], Math.min(sellOffer.quantity, buyOffer.quantity));
         transactions.add(transaction);
         System.out.println(" [x] Received '" + transaction + "'");
     }

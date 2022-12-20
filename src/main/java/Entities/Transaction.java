@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Transaction
 {
-    public int id;
+    private int id;
     private int buyerId;
     private int sellerId;
     private String instrument;
@@ -13,13 +13,12 @@ public class Transaction
     private double totalValue;
     private Timestamp timestamp;
 
-    static int counter = 0;
+    private static int counter = 0;
 
     public Transaction(StockOfferMessage sellOffer, StockOfferMessage buyOffer, int quantity){
         this.id = this.counter++;
         this.buyerId = buyOffer.clientId;
         this.sellerId = sellOffer.clientId;
-
         this.instrument = sellOffer.instrument;
         this.quantity = quantity;
         this.valuePerStock = sellOffer.value_stock;
@@ -28,8 +27,8 @@ public class Transaction
     }
 
     public String toString(){
-        return String.format("[%s] TRANSACTION --- Seller: Client %d, Buyer: Client %d, Instrument: %s, Quantity: %d, ValuePerStock: %f, Total: %f",
-                timestamp, sellerId, buyerId, instrument, quantity, valuePerStock, totalValue);
+        return String.format("[%s] TRANSACTION %d --- Buyer: Client %d, Seller: Client %d, Instrument: %s, Quantity: %d, ValuePerStock: %f, Total: %f",
+                timestamp, id, buyerId, sellerId, instrument, quantity, valuePerStock, totalValue);
     }
 
 }

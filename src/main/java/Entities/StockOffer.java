@@ -37,6 +37,8 @@ public class StockOffer
 
     // endregion
 
+    // region public methods
+
     public void setToCompleted(){
         this.type = Type.COMPLETED;
         StockExchange.removeOffer(this);
@@ -47,15 +49,17 @@ public class StockOffer
     }
 
     public boolean checkMatch(StockOffer so){
-        return !client.equals(so.client) && instrument.equals(so.instrument) && so.type != Type.COMPLETED && Math.abs(so.value_stock - value_stock) <= 0.05;
+        return !client.equals(so.client) && instrument.equals(so.instrument) &&
+                so.type != Type.COMPLETED && Math.abs(so.value_stock - value_stock) <= 0.005;
     }
 
     public int getQuantityOfMatching(StockOffer targetOffer){
-        int quant = Math.min(this.quantity, targetOffer.quantity);
+        int min_quantity = Math.min(this.quantity, targetOffer.quantity);
 
-        return quant;
-
+        return min_quantity;
     }
+
+    public int getClientId(){ return this.client.getId(); }
 
     public void updateQuantity(int quantity){
         this.quantity -= quantity;
@@ -72,6 +76,7 @@ public class StockOffer
 
     public int compareTo(StockOffer so){
         int string_comp = so.instrument.compareTo(instrument), time_comp = so.timestamp.compareTo(timestamp), id_comp = so.id - id;
+
         if(string_comp != 0)
             return string_comp;
 
@@ -82,6 +87,8 @@ public class StockOffer
     }
 
     public StockOfferMessage getStockOfferMessage() {
-        return new StockOfferMessage(client.getId(), instrument, quantity, value_stock, timestamp, id);
+        return new StockOfferMessage(client.getId(), instrument, quantity, value_stock, timestamp, id, type);
     }
+
+    // endregion
 }

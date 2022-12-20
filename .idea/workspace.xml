@@ -6,13 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="- added separate threads for matching, added priority queue for offers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockUnit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockOffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockOffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockOfferMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockOfferMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/TransactionRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TradingTape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TradingTape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="adelin/rabbitmq" />
+        <entry key="$PROJECT_DIR$" value="dani" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,15 +77,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,7 +206,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/dani" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>

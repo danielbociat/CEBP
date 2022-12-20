@@ -3,13 +3,22 @@ package Entities;
 import java.util.ArrayList;
 
 public class Client {
+
+    // region fields
+
     private int id;
     private static int count = 0;
     private ArrayList<StockOffer> offers;
 
+    // endregion
+
+    // region ctor
+
     public Client() {
         this.id = count++;
     }
+
+    // endregion
 
     public int getId(){
         return this.id;
@@ -28,10 +37,11 @@ public class Client {
 
     public void placeOffers(){
         for(StockOffer offer : offers){
+            String queue = "offers.sell";
             if(offer.getType() == StockOffer.Type.BUY)
-                RabbitMQSender.SendMessageToBuyQueue(offer);
-            else
-                RabbitMQSender.SendMessageToSellQueue(offer);
+                queue = "offers.buy";
+
+            RabbitMQSender.SendMessageToOfferQueue(queue, offer);
 
             StockExchange.addOffer(offer);
         }
