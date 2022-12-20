@@ -17,7 +17,7 @@ public class Main {
         int no_stocks = instruments.size();
 
         ArrayList<Client> clients = new ArrayList<>();
-        int c = 10, no_offers = 120, n = prices.size();
+        int c = 2, no_offers = 120, n = prices.size();
         int max = 15, min = 1;
 
         for(int client = 0; client < c; ++client){

@@ -20,9 +20,13 @@ public class StockExchange {
                         if (targetOffer.matchLock.tryLock()) {
                             try {
                                 int quantity = stock_offer.getQuantityOfMatching(targetOffer);
-                                Transaction transaction = new Transaction(stock_offer, targetOffer, quantity);
+//                                Transaction transaction = new Transaction(stock_offer, targetOffer, quantity);
+                                if (stock_offer.type == StockOffer.Type.SELL) {
+                                    RabbitMQSender.SendMessageToMatchQueue(stock_offer, targetOffer);
+                                } else {
+                                    RabbitMQSender.SendMessageToMatchQueue(targetOffer , stock_offer);
+                                }
                                 // System.out.println(transaction);
-                                RabbitMQSender.SendMessageToQueue("offers.match",transaction);
 
                                 stock_offer.updateQuantity(quantity);
                                 targetOffer.updateQuantity(quantity);

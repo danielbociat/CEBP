@@ -45,16 +45,6 @@ public class StockOffer
     public Type getType(){
         return this.type;
     }
-    public Client getClient(){
-        return this.client;
-    }
-    public double getValue(){
-        return this.value_stock;
-    }
-
-    public String getInstrument(){
-        return this.instrument;
-    }
 
     public boolean checkMatch(StockOffer so){
         return !client.equals(so.client) && instrument.equals(so.instrument) && so.type != Type.COMPLETED && Math.abs(so.value_stock - value_stock) <= 0.05;
@@ -89,5 +79,9 @@ public class StockOffer
             return time_comp;
 
         return id_comp;
+    }
+
+    public StockOfferMessage getStockOfferMessage() {
+        return new StockOfferMessage(client.getId(), instrument, quantity, value_stock, timestamp, id);
     }
 }

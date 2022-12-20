@@ -1,3 +1,6 @@
+import Entities.StockOfferMessage;
+import Entities.Transaction;
+import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -9,8 +12,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TradingTape {
 
-    public static ConcurrentLinkedQueue<String> transactionHistory = new ConcurrentLinkedQueue<>();
+    public static ArrayList<StockOfferMessage> offers = new ArrayList<>();
 
+    public static ArrayList<Transaction> transactions = new ArrayList<>();
     public static void main(String[] argv) {
         ArrayList<String> queues = new ArrayList<>(Arrays.asList("offers.buy", "offers.sell", "offers.match"));
 
@@ -39,9 +43,29 @@ public class TradingTape {
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
-            transactionHistory.add(message);
-            System.out.println(" [x] Received '" + message + "'"); /// save transaction history in memory
+            if (queueName.equals("offers.match")) handleTransactionMessage(message);
+            else handleOffersMessage(message);
+
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> { });
+    }
+
+    private static void handleTransactionMessage(String message) {
+        Gson gson = new Gson();
+        StockOfferMessage[] offersMessage = gson.fromJson(message, StockOfferMessage[].class);
+
+        StockOfferMessage sellOffer = offersMessage[0];
+        StockOfferMessage buyOffer = offersMessage[1];
+
+        Transaction transaction = new Transaction(sellOffer, buyOffer, Math.min(sellOffer.quantity, buyOffer.quantity));
+        transactions.add(transaction);
+        System.out.println(" [x] Received '" + transaction + "'");
+    }
+
+    private static void handleOffersMessage(String message) {
+        Gson gson = new Gson();
+        StockOfferMessage offer = gson.fromJson(message, StockOfferMessage.class);
+        offers.add(offer);
+        System.out.println(" [x] Received '" + offer + "'");
     }
 }

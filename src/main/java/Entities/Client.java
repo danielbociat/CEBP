@@ -29,9 +29,9 @@ public class Client {
     public void placeOffers(){
         for(StockOffer offer : offers){
             if(offer.getType() == StockOffer.Type.BUY)
-                RabbitMQSender.SendMessageToQueue("offers.buy", offer);
+                RabbitMQSender.SendMessageToBuyQueue(offer);
             else
-                RabbitMQSender.SendMessageToQueue("offers.sell", offer);
+                RabbitMQSender.SendMessageToSellQueue(offer);
 
             StockExchange.addOffer(offer);
         }
