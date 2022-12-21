@@ -27,6 +27,7 @@ public class Client {
     public ArrayList<StockOffer> getOffers(){
         return this.offers;
     }
+
     public void setOffers(ArrayList<StockOffer> offers){
         this.offers = offers;
     }

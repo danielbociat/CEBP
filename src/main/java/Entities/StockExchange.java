@@ -14,9 +14,9 @@ public class StockExchange {
                 }
 
                 try {
-                    if (targetOffer.getType() != stock_offer.getType() && stock_offer.checkMatch(targetOffer)) {
-                        if (targetOffer.matchLock.tryLock()) {
-                            try {
+                    if (targetOffer.matchLock.tryLock()) {
+                        try {
+                            if (targetOffer.getType() != stock_offer.getType() && stock_offer.checkMatch(targetOffer)) {
                                 int quantity = stock_offer.getQuantityOfMatching(targetOffer);
 
                                 if (stock_offer.type == StockOffer.Type.SELL) {
@@ -27,9 +27,9 @@ public class StockExchange {
 
                                 stock_offer.updateQuantity(quantity);
                                 targetOffer.updateQuantity(quantity);
-                            }finally {
-                                targetOffer.matchLock.unlock();
                             }
+                        }finally {
+                            targetOffer.matchLock.unlock();
                         }
                     }
                 }finally {
