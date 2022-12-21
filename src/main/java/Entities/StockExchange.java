@@ -19,11 +19,7 @@ public class StockExchange {
                             if (targetOffer.getType() != stock_offer.getType() && stock_offer.checkMatch(targetOffer)) {
                                 int quantity = stock_offer.getQuantityOfMatching(targetOffer);
 
-                                if (stock_offer.type == StockOffer.Type.SELL) {
-                                    RabbitMQSender.SendMessageToMatchQueue(stock_offer, targetOffer);
-                                } else {
-                                    RabbitMQSender.SendMessageToMatchQueue(targetOffer , stock_offer);
-                                }
+                                RabbitMQSender.SendMessageToMatchQueue(stock_offer, targetOffer);
 
                                 stock_offer.updateQuantity(quantity);
                                 targetOffer.updateQuantity(quantity);

@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="- Added thread safe IDs">
+    <list default="true" id="cf58f98f-6516-4ccf-a354-b73a78b9f99d" name="Default Changelist" comment="- Fixed locks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/RabbitMQSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/StockExchange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TradingTape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TradingTape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +123,7 @@
       <workItem from="1670712518223" duration="836000" />
       <workItem from="1670761365977" duration="8007000" />
       <workItem from="1671478656504" duration="4608000" />
-      <workItem from="1671618476947" duration="1467000" />
+      <workItem from="1671618476947" duration="2490000" />
     </task>
     <task id="LOCAL-00001" summary="Added the classes to package">
       <created>1668852279051</created>
@@ -200,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671619193965</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- Fixed locks">
+      <created>1671620222588</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671620222588</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +250,8 @@
     <MESSAGE value="- added separate threads for matching, added priority queue for offers" />
     <MESSAGE value="- Cleaned code, adjusted messages" />
     <MESSAGE value="- Added thread safe IDs" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added thread safe IDs" />
+    <MESSAGE value="- Fixed locks" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed locks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

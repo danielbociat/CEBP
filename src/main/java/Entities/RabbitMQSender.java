@@ -12,9 +12,9 @@ public class RabbitMQSender {
         SendMessage(queue, payload);
     }
 
-    public static void SendMessageToMatchQueue(StockOffer sell, StockOffer buy){
+    public static void SendMessageToMatchQueue(StockOffer of1, StockOffer of2){
         Gson gson = new Gson();
-        StockOfferMessage[] transactionMessage = {sell.getStockOfferMessage(), buy.getStockOfferMessage()};
+        StockOfferMessage[] transactionMessage = {of1.getStockOfferMessage(), of2.getStockOfferMessage()};
         String payload = gson.toJson(transactionMessage);
         SendMessage("offers.match", payload);
     }

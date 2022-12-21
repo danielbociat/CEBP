@@ -15,13 +15,19 @@ public class Transaction
 
     private static int counter = 0;
 
-    public Transaction(StockOfferMessage sellOffer, StockOfferMessage buyOffer, int quantity){
+    public Transaction(StockOfferMessage of1, StockOfferMessage of2, int quantity){
         this.id = this.counter++;
-        this.buyerId = buyOffer.clientId;
-        this.sellerId = sellOffer.clientId;
-        this.instrument = sellOffer.instrument;
+        if(of1.type == StockOffer.Type.BUY){
+            this.buyerId = of1.clientId;
+            this.sellerId = of2.clientId;
+        }
+        else{
+            this.buyerId = of2.clientId;
+            this.sellerId = of1.clientId;
+        }
+        this.instrument = of1.instrument;
         this.quantity = quantity;
-        this.valuePerStock = sellOffer.value_stock;
+        this.valuePerStock = of1.value_stock;
         this.totalValue = quantity * valuePerStock;
         this.timestamp = new Timestamp(System.currentTimeMillis());
     }

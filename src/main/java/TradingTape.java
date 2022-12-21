@@ -53,10 +53,10 @@ public class TradingTape {
         Gson gson = new Gson();
         StockOfferMessage[] offersMessage = gson.fromJson(message, StockOfferMessage[].class);
 
-        StockOfferMessage sellOffer = offersMessage[0];
-        StockOfferMessage buyOffer = offersMessage[1];
+        StockOfferMessage of1 = offersMessage[0];
+        StockOfferMessage of2 = offersMessage[1];
 
-        Transaction transaction = new Transaction(offersMessage[0], offersMessage[1], Math.min(sellOffer.quantity, buyOffer.quantity));
+        Transaction transaction = new Transaction(offersMessage[0], offersMessage[1], Math.min(of1.quantity, of2.quantity));
         transactions.add(transaction);
         System.out.println(" [x] Received '" + transaction + "'");
     }
