@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
     public static void main(String[] args){
@@ -12,7 +14,6 @@ public class Main {
         ArrayList<Double> prices = new ArrayList<>(Arrays.asList(50.0, 75.0, 100.0, 200.0, 100.0, 500.0, 5.0, 105.0));
         ArrayList<String> instruments = new ArrayList<>(Arrays.asList("META", "TESLA", "AAPL", "AMZN", "PLTR", "RIOT", "NEO", "NITO"));
         int no_stocks = instruments.size();
-
         ArrayList<Client> clients = new ArrayList<>();
         int no_clients = 10, no_offers_per_client = 120, n = prices.size();
         int max = 15, min = 1;
@@ -53,10 +54,13 @@ public class Main {
 
         /**
         try{
-            TimeUnit.SECONDS.sleep(30);
+            TimeUnit.SECONDS.sleep(45);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        System.out.println(StockOffer.getTotalId());
+
         System.out.println("\n\n\n");
         for(StockOffer off : StockExchange.offers)
             System.out.println(off);

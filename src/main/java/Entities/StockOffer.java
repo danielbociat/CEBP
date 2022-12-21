@@ -1,6 +1,7 @@
 package Entities;
 
 import java.sql.Timestamp;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -15,7 +16,8 @@ public class StockOffer
     private Timestamp timestamp;
     private int id;
 
-    static int total_id = 0;
+    private static AtomicInteger total_id = new AtomicInteger(0);
+
     public enum Type{
         BUY, SELL, COMPLETED
     }
@@ -32,7 +34,7 @@ public class StockOffer
         this.client = client;
         this.quantity = quantity;
         this.timestamp = new Timestamp(System.currentTimeMillis());
-        this.id = total_id++;
+        this.id = total_id.getAndIncrement();
     }
 
     // endregion
@@ -60,6 +62,8 @@ public class StockOffer
     }
 
     public int getClientId(){ return this.client.getId(); }
+
+    public static int getTotalId(){ return total_id.get(); }
 
     public void updateQuantity(int quantity){
         this.quantity -= quantity;
